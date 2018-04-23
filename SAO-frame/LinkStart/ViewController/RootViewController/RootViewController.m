@@ -59,10 +59,7 @@
 - (void)SAOUtilLink:(BOOL)link{
     if(self.linkStart != link){
         self.linkStart = link;
-        NSLog(@"--------------------------%@--------------------------",link ? @"linkstart" : @"linkEnd");
-        [UIView animateWithDuration:0.3 delay:0 options:0  animations:^{
-            self.SAOUtil.view.alpha = link ? 1 : 0;
-        } completion:NULL];
+        link ? [self.SAOUtil linkStart] : [self.SAOUtil linkEnd];
     }
 }
 

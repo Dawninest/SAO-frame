@@ -10,4 +10,8 @@
 
 @interface SAOUtilViewController : UIViewController
 
+- (void)linkStart;
+
+- (void)linkEnd;
+
 @end
