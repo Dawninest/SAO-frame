@@ -41,7 +41,6 @@
     UIImage *cellBackImg = self.CellChoose ? [UIImage imageNamed:@"btn_press.png"] : [UIImage imageNamed:@"btn_normal.png"];
     [self.cellBack setImage:cellBackImg];
     [self.cellValue setImage:cellValueImg];
-    
 }
 
 - (UIImage *)getCellValue:(NSString *)cellName cellStatus:(BOOL)choosed{

@@ -33,6 +33,14 @@
 		DA835F1E208DECC700303D8B /* netw_conn_hover.png in Resources */ = {isa = PBXBuildFile; fileRef = DA835F1C208DECC700303D8B /* netw_conn_hover.png */; };
 		DA835F21208DED0F00303D8B /* mail1_hover.png in Resources */ = {isa = PBXBuildFile; fileRef = DA835F1F208DED0F00303D8B /* mail1_hover.png */; };
 		DA835F22208DED0F00303D8B /* mail1_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = DA835F20208DED0F00303D8B /* mail1_normal.png */; };
+		DA835F2A2092073D00303D8B /* SAO_SoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DA835F292092073D00303D8B /* SAO_SoundManager.m */; };
+		DA835F3320920F3200303D8B /* Dismiss.SAO.Launcher.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA835F2C20920F3200303D8B /* Dismiss.SAO.Launcher.wav */; };
+		DA835F3420920F3200303D8B /* Popup.SAO.Message.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA835F2D20920F3200303D8B /* Popup.SAO.Message.wav */; };
+		DA835F3520920F3200303D8B /* Popup.SAO.Launcher.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA835F2E20920F3200303D8B /* Popup.SAO.Launcher.wav */; };
+		DA835F3620920F3200303D8B /* Popup.SAO.Warn.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA835F2F20920F3200303D8B /* Popup.SAO.Warn.wav */; };
+		DA835F3720920F3200303D8B /* Popup.SAO.Panel.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA835F3020920F3200303D8B /* Popup.SAO.Panel.wav */; };
+		DA835F3820920F3200303D8B /* Popup.SAO.Menu.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA835F3120920F3200303D8B /* Popup.SAO.Menu.wav */; };
+		DA835F3920920F3200303D8B /* Feedback.SAO.Click.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA835F3220920F3200303D8B /* Feedback.SAO.Click.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +99,15 @@
 		DA835F1C208DECC700303D8B /* netw_conn_hover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = netw_conn_hover.png; sourceTree = "<group>"; };
 		DA835F1F208DED0F00303D8B /* mail1_hover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mail1_hover.png; sourceTree = "<group>"; };
 		DA835F20208DED0F00303D8B /* mail1_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mail1_normal.png; sourceTree = "<group>"; };
+		DA835F282092073D00303D8B /* SAO_SoundManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SAO_SoundManager.h; sourceTree = "<group>"; };
+		DA835F292092073D00303D8B /* SAO_SoundManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SAO_SoundManager.m; sourceTree = "<group>"; };
+		DA835F2C20920F3200303D8B /* Dismiss.SAO.Launcher.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Dismiss.SAO.Launcher.wav; sourceTree = "<group>"; };
+		DA835F2D20920F3200303D8B /* Popup.SAO.Message.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Popup.SAO.Message.wav; sourceTree = "<group>"; };
+		DA835F2E20920F3200303D8B /* Popup.SAO.Launcher.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Popup.SAO.Launcher.wav; sourceTree = "<group>"; };
+		DA835F2F20920F3200303D8B /* Popup.SAO.Warn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Popup.SAO.Warn.wav; sourceTree = "<group>"; };
+		DA835F3020920F3200303D8B /* Popup.SAO.Panel.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Popup.SAO.Panel.wav; sourceTree = "<group>"; };
+		DA835F3120920F3200303D8B /* Popup.SAO.Menu.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Popup.SAO.Menu.wav; sourceTree = "<group>"; };
+		DA835F3220920F3200303D8B /* Feedback.SAO.Click.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Feedback.SAO.Click.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +223,8 @@
 			children = (
 				DA3F7BC8208C6EA700D987DF /* SAOUtilViewController.h */,
 				DA3F7BC9208C6EA700D987DF /* SAOUtilViewController.m */,
+				DA835F282092073D00303D8B /* SAO_SoundManager.h */,
+				DA835F292092073D00303D8B /* SAO_SoundManager.m */,
 				DA835F03208DD59000303D8B /* SAO_BtnCell.h */,
 				DA835F04208DD59000303D8B /* SAO_BtnCell.m */,
 			);
@@ -234,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				DA835F07208DE6B800303D8B /* appBack.PNG */,
+				DA835F2B20920F3200303D8B /* sounds */,
 				DA835F08208DE6B800303D8B /* image */,
 				DA835F0D208DE6B800303D8B /* Fonts */,
 			);
@@ -264,6 +284,20 @@
 				DA835F0F208DE6B800303D8B /* SAOUI.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		DA835F2B20920F3200303D8B /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+				DA835F2C20920F3200303D8B /* Dismiss.SAO.Launcher.wav */,
+				DA835F2D20920F3200303D8B /* Popup.SAO.Message.wav */,
+				DA835F2E20920F3200303D8B /* Popup.SAO.Launcher.wav */,
+				DA835F2F20920F3200303D8B /* Popup.SAO.Warn.wav */,
+				DA835F3020920F3200303D8B /* Popup.SAO.Panel.wav */,
+				DA835F3120920F3200303D8B /* Popup.SAO.Menu.wav */,
+				DA835F3220920F3200303D8B /* Feedback.SAO.Click.wav */,
+			);
+			path = sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -371,6 +405,7 @@
 			files = (
 				DA835F14208DE6B800303D8B /* btn_press.png in Resources */,
 				DA835F10208DE6B800303D8B /* appBack.PNG in Resources */,
+				DA835F3820920F3200303D8B /* Popup.SAO.Menu.wav in Resources */,
 				DA835F1D208DECC700303D8B /* netw_conn_normal.png in Resources */,
 				DA3F77CA208C3EEE00D987DF /* LaunchScreen.storyboard in Resources */,
 				DA835F1E208DECC700303D8B /* netw_conn_hover.png in Resources */,
@@ -379,10 +414,16 @@
 				DA3F77C7208C3EEE00D987DF /* Assets.xcassets in Resources */,
 				DA835F13208DE6B800303D8B /* btn_normal.png in Resources */,
 				DA835F15208DE6B800303D8B /* FZZY.ttf in Resources */,
+				DA835F3520920F3200303D8B /* Popup.SAO.Launcher.wav in Resources */,
 				DA3F77C2208C3EED00D987DF /* Main.storyboard in Resources */,
 				DA835F16208DE6B800303D8B /* SAOUI.ttf in Resources */,
+				DA835F3720920F3200303D8B /* Popup.SAO.Panel.wav in Resources */,
+				DA835F3620920F3200303D8B /* Popup.SAO.Warn.wav in Resources */,
 				DA835F1A208DEBE700303D8B /* setting_hover.png in Resources */,
 				DA835F19208DEBE700303D8B /* setting_normal.png in Resources */,
+				DA835F3920920F3200303D8B /* Feedback.SAO.Click.wav in Resources */,
+				DA835F3320920F3200303D8B /* Dismiss.SAO.Launcher.wav in Resources */,
+				DA835F3420920F3200303D8B /* Popup.SAO.Message.wav in Resources */,
 				DA835F11208DE6B800303D8B /* info_normal.png in Resources */,
 				DA835F22208DED0F00303D8B /* mail1_normal.png in Resources */,
 			);
@@ -409,6 +450,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA835F2A2092073D00303D8B /* SAO_SoundManager.m in Sources */,
 				DA3F7BCA208C6EA700D987DF /* SAOUtilViewController.m in Sources */,
 				DA3F77C5208C3EED00D987DF /* SAO_frame.xcdatamodeld in Sources */,
 				DA3F7BC7208C6E8F00D987DF /* MainViewController.m in Sources */,

@@ -8,6 +8,7 @@
 
 #import "SAOUtilViewController.h"
 #import "SAO_BtnCell.h"
+#import "SAO_SoundManager.h"
 
 #define SC_H [UIScreen mainScreen].bounds.size.height
 #define SC_W [UIScreen mainScreen].bounds.size.width
@@ -32,10 +33,14 @@
 }
 
 - (void)initData{
-    self.SAO_BtnArr = @[@{@"name":@"user",@"status":@"choose"},
-                        @{@"name":@"like",@"status":@"empty"},
-                        @{@"name":@"chat",@"status":@"empty"},
-                        @{@"name":@"set",@"status":@"empty"}];
+    NSArray *secondList = @[@{@"name":@"二级菜单-1"},
+                            @{@"name":@"二级菜单-2"},
+                            @{@"name":@"二级菜单-3"},
+                            @{@"name":@"二级菜单-4"}];
+    self.SAO_BtnArr = @[@{@"name":@"user",@"status":@"empty",@"nextList":secondList},
+                        @{@"name":@"like",@"status":@"empty",@"nextList":secondList},
+                        @{@"name":@"chat",@"status":@"empty",@"nextList":secondList},
+                        @{@"name":@"set",@"status":@"empty",@"nextList":secondList}];
 }
 
 - (void)initUI{
@@ -46,33 +51,51 @@
 
 - (void)linkStart{
     NSLog(@"--------------------------linkstart--------------------------");
-    [UIView animateWithDuration:0.2 delay:0 options:0  animations:^{
+    [SAO_SoundManager playMusic:@"launch_pop" Loop:NO];
+    [UIView animateWithDuration:0.6 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0 options:0 animations:^{
         self.SAO_Table.frame = CGRectMake((SC_W - CELL_H) / 2, (SC_H - CELL_H * [self.SAO_BtnArr count]) / 2, CELL_H, CELL_H * [self.SAO_BtnArr count]);
         self.view.alpha = 1;
-    } completion:NULL];
+    } completion:^(BOOL finished) {
+        [self chooseCellName:@"user"];
+    }];
 }
 
 - (void)linkEnd{
     NSLog(@"--------------------------linkEnd--------------------------");
+    [SAO_SoundManager playMusic:@"launch_miss" Loop:NO];
     [UIView animateWithDuration:0.2 delay:0 options:0  animations:^{
-        self.SAO_Table.frame = CGRectMake((SC_W - CELL_H) / 2, 0, CELL_H, CELL_H * [self.SAO_BtnArr count]);
+        self.SAO_Table.frame = CGRectMake((SC_W - CELL_H) / 2, (SC_H - CELL_H * [self.SAO_BtnArr count]) / 4, CELL_H, CELL_H * [self.SAO_BtnArr count]);
         self.view.alpha = 0;
-    } completion:NULL];
+    } completion:^(BOOL finished) {
+        [self clearBtnList];
+    }];
 }
 
 - (void)chooseCellName:(NSString *)cellName{
+    [self loadNewBtnArr:cellName status:@"choose"];
+    [SAO_SoundManager playMusic:@"feedback" Loop:NO];
+    [self openNextList:cellName];
+}
+
+- (void)clearBtnList{
+    [self loadNewBtnArr:@"all" status:@"empty"];
+}
+
+- (void)loadNewBtnArr:(NSString *)cellName status:(NSString *)newStatus{
     NSMutableArray *newArray = [NSMutableArray array];
     for (NSMutableDictionary *btnDic in self.SAO_BtnArr) {
         NSString *btnName = [btnDic objectForKey:@"name"];
-        NSString *chooseStatus = [btnName isEqualToString:cellName] ? @"choose" : @"empty";
+        NSString *chooseStatus = [btnName isEqualToString:cellName] ? newStatus : @"empty";
         NSDictionary *newBtnDic = @{@"name":btnName,@"status":chooseStatus};
         [newArray addObject:newBtnDic];
     }
     self.SAO_BtnArr = [NSMutableArray arrayWithArray:newArray];
     [self.SAO_Table reloadData];
-    
 }
 
+- (void)openNextList:(NSString *)chooseCellName{
+    //[SAO_SoundManager playMusic:@"menu" Loop:NO];
+}
 
 
 #pragma mark -- UITableViewDataSource
@@ -83,18 +106,14 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //table view的重用机制
-    //1.声明一个可重用标识符
-    static NSString *cellIdentifer = @"mycell";
-    //2.从队列中拿出一个可重用的特殊cell
+    static NSString *cellIdentifer = @"SAO_Cell";
     SAO_BtnCell *SAO_Cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifer];
     if (!SAO_Cell) {
-        //3.如果cell没有被初始化，则初始化它
         SAO_Cell = [[SAO_BtnCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifer];
         [SAO_Cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
     
     SAO_Cell.backgroundColor = [UIColor clearColor];
-    //获取当前分区对应的字体数组
     NSDictionary *cellParams = self.SAO_BtnArr[indexPath.row];
     [SAO_Cell setBtnByParams:cellParams];
     
@@ -119,10 +138,11 @@
 
 - (UITableView *)SAO_Table{
     if(!_SAO_Table){
-        _SAO_Table = [[UITableView alloc]initWithFrame:CGRectMake((SC_W - CELL_H) / 2, 0, CELL_H, CELL_H * [self.SAO_BtnArr count])];
+        _SAO_Table = [[UITableView alloc]initWithFrame:CGRectMake((SC_W - CELL_H) / 2, (SC_H - CELL_H * [self.SAO_BtnArr count]) / 4, CELL_H, CELL_H * [self.SAO_BtnArr count])];
         _SAO_Table.rowHeight = CELL_H;
         _SAO_Table.backgroundColor = [UIColor clearColor];
         _SAO_Table.separatorStyle = UITableViewCellSelectionStyleNone;
+        _SAO_Table.scrollEnabled = NO;
         _SAO_Table.delegate = self;
         _SAO_Table.dataSource = self;
     }
